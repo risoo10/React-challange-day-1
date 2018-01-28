@@ -29,6 +29,5 @@ I developed single page that contained only:
 - Messages with time and avatar
 - Input for sending new message
 
-Picture
 ![example](https://github.com/risoo10/React-challange-day-1/blob/012e7521e2aaedab28694a58e67a5d1cc5c5d2cf/final-images/final-design.PNG?raw=true)
 
