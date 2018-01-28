@@ -6,7 +6,7 @@ import NewMessagePanel from './NewMessagePanel';
 
 const Wrapper = styled.div`
 	width: 400px;
-	margin: 0px auto;
+	margin: 2em auto;
 `
 
 export default class App extends React.Component {
@@ -43,7 +43,7 @@ export default class App extends React.Component {
                 },
                 {
                     sender: 'me',
-                    message: 'Go with blond color :D',
+                    message: 'Go with blond color :D. But you should definitely cut your hair shorter, beacause you leave you hair everywhere.',
                     time: '9.35 pm'
                 },
                 ,
@@ -72,7 +72,7 @@ export default class App extends React.Component {
     }
 
     handleNewMessage(msg) {
-    	const mesgs = this.state.messages.splice();
+    	const mesgs = this.state.messages.slice();
     	mesgs.push(msg);
     	this.setState({
 			messages: mesgs,
@@ -84,7 +84,7 @@ export default class App extends React.Component {
 			<Wrapper>
 				<ChatInfo></ChatInfo>
 				<MessagesPanel messages={this.state.messages}></MessagesPanel>
-				<NewMessagePanel newMessageEvent={this.handleNewMessage}></NewMessagePanel>
+				<NewMessagePanel onSubmit={(msg) => this.handleNewMessage(msg)}></NewMessagePanel>
 			</Wrapper>
 		);
 	}

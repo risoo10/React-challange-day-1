@@ -8,7 +8,6 @@ const Container = styled.div`
   height: 500px;
   width: 90%;
   
-  
 `
 
 const MessageWrapper = styled.div`
@@ -17,14 +16,14 @@ const MessageWrapper = styled.div`
     'margin-left: 0px;' : 'margin-left: auto;' +
     'margin-right: 0px;' }; 
   display: flex;
-  align-items: start;
+  justify-content: flex-start;  
   flex-direction: ${props => props.align === 'left' 
     ? 'row' 
     : 'row-reverse'};
   margin-bottom: 1em;
 `
 const MessageAvatar = styled.img`
-  width: 25px;
+  min-width: 25px;
   height: 25px;
   border-radius: 100%;
 `
@@ -44,6 +43,7 @@ const MessageBubble = styled.div`
 
 const MessageText = styled.p`
   font-size: 14px;
+  line-height: 1.5;
   margin-bottom: 0.4em;
 `
 

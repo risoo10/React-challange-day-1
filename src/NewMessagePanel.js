@@ -5,14 +5,17 @@ const TypingPanel = styled.div`
   background-color: whitesmoke;
   width: 94%;
   padding: 3%;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+  z-index: 10;
 `
 
 const Form = styled.form`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
 `
 
 const Input = styled.input`
+  width: 100%;
   margin-right: 2%;
   border-radius: 15px;
   border: 0px;
@@ -24,7 +27,8 @@ const Button = styled.button`
   background: -webkit-linear-gradient(bottom right, #7e77f8 0%, #08aeea 100%);
   border-radius: 15px;
   border: 0px;
-  padding: 10px;
+  font-weight: bold;
+  padding: 10px 15px;
   color: white;
 `
 
@@ -36,10 +40,20 @@ class NewMessagePanel extends Component {
         }
     }
 
-    onSubmit(){
-        // Send mssg
+    onSubmit(event){
+        event.preventDefault();
 
+        if(event.target.value === '') return;
 
+        const newMsg = {
+            sender: "me",
+            message: this.state.msgValue,
+            time: "8:39 PM"
+        }
+        this.props.onSubmit(newMsg);
+        this.setState({
+            msgValue: ''
+        })
     }
 
     onChange(event){
@@ -52,7 +66,7 @@ class NewMessagePanel extends Component {
     render() {
         return (
             <TypingPanel>
-                <form onSubmit={() => this.onSubmit()}>
+                <Form onSubmit={(event) => this.onSubmit(event)}>
                     <Input
                         placeholder="Type message here ..."
                         value={this.state.msgValue}
@@ -61,9 +75,9 @@ class NewMessagePanel extends Component {
                     />
                     <Button
                         type="button"
-                        onClick={() => this.onSubmit()}
+                        onClick={(event) => this.onSubmit(event)}
                     >Send</Button>
-                </form>
+                </Form>
             </TypingPanel>
         );
     }
